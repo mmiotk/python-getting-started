@@ -39,7 +39,9 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'django.contrib.sites',
     "hello",
+    'microsoft_auth',
 ]
 
 MIDDLEWARE = [
@@ -115,5 +117,23 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+
+SITE_ID = 1
+
+MICROSOFT_AUTH_CLIENT_ID = '4c46da7c-e2cc-4e6c-bab5-b982a10b2809'
+MICROSOFT_AUTH_CLIENT_SECRET = 'ToEUCO0oYBpz.LTf9rG1.FS-_~WGIT6Yi2'
+# Tenant ID is also needed for single tenant applications
+# MICROSOFT_AUTH_TENANT_ID = 'your-tenant-id-from-apps.dev.microsoft.com'
+
+# pick one MICROSOFT_AUTH_LOGIN_TYPE value
+# Microsoft authentication
+# include Microsoft Accounts, Office 365 Enterpirse and Azure AD accounts
+MICROSOFT_AUTH_LOGIN_TYPE = 'ma'
+
+# Xbox Live authentication
+# MICROSOFT_AUTH_LOGIN_TYPE = 'xbl'  # Xbox Live authentication
+
+os.environ['OAUTHLIB_RELAX_TOKEN_SCOPE'] = '1'
+os.environ['OAUTHLIB_IGNORE_SCOPE_CHANGE'] = '1'
 
 django_heroku.settings(locals())
