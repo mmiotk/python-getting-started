@@ -1,83 +1,167 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-<title>Python Getting Started on Heroku</title>
-  <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script type="text/javascript" src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <style type="text/css">
-    .jumbotron {
-        background: #532f8c;
-        color: white;
-        padding-bottom: 80px
-    }
-    .jumbotron .btn-primary {
-        background: #845ac7;
-        border-color: #845ac7
-    }
-    .jumbotron .btn-primary:hover {
-        background: #7646c1
-    }
-    .jumbotron p {
-        color: #d9ccee;
-        max-width: 75%;
-        margin: 1em auto 2em
-    }
-    .navbar+.jumbotron {
-        margin-top: -20px
-    }
-    .jumbotron .lang-logo {
-        display: block;
-        background: #b01302;
-        border-radius: 50%;
-        overflow: hidden;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-        border: 2px solid white
-    }
-    .jumbotron .lang-logo img {
-        max-width: 100%
-    }
+      <meta charset="UTF-8">
+      <title>Mateusz Miotk - Strona domowa</title>
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+      <meta name="Keywords" content="mateusz, miotk, instytut informatyki, uniwersytet gdański" />
+      <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta http-equiv="cache-control" content="no-cache" /> -->
+      <meta name="Distribution" content="Global" />
+      <meta name="author" content="Mateusz Miotk" />
+      <meta name="Robots" content="index,follow" />
+      {% csrf_token %}
+      <!-- Favicons -->
+      <link rel="shortcut icon" href="{%  static 'images/favicon.ico' %}">
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700" rel="stylesheet">
 
+      <!-- Bootstrap CSS File -->
+      <link href="{% static "bootstrap/css/bootstrap.css" %}" rel="stylesheet">
 
-  </style>
+      <!-- Libraries CSS Files -->
+      <!-- <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet"> -->
+
+      <!-- Main Stylesheet File -->
+      <link href="{% static "bootstrap/css/style.css" %}" rel="stylesheet">
+      <script type="text/javascript" src="{% static 'bootstrap/js/main.js' %}"></script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top navbar-inverse">
-  <div class="container">
-    <ul class="nav navbar-nav">
-      <li class="active">
-        <a href="/"><span class="glyphicon glyphicon-home"></span> Home</a>
-      </li>
-      <li>
-        <a href="https://devcenter.heroku.com/articles/how-heroku-works"><span class="glyphicon glyphicon-user"></span> How Heroku Works</a>
-      </li>
-      <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-info-sign"></span> Getting Started Guides <span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-ruby">Getting Started with Ruby on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">Getting Started with Node on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-php">Getting Started with PHP on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-python">Getting Started with Python on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-java">Getting Started with Java on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-clojure">Getting Started with Clojure on Heroku</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-scala">Getting Started with Scala on Heroku</a></li>
-            <li class="divider"></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-heroku-and-connect-without-local-dev">Getting Started on Heroku with Heroku Connect</a></li>
-            <li><a href="https://devcenter.heroku.com/articles/getting-started-with-jruby">Getting Started with Ruby on Heroku (Microsoft Windows)</a></li>
-          </ul>
-      </li>
-    </ul>
-    <ul class="nav navbar-nav navbar-right">
-      <li class="navbar-right">
-        <a href="https://devcenter.heroku.com"><span class="glyphicon glyphicon-book"></span> Heroku Dev Center</a>
-      </li>
-    </ul>
-  </div>
-</nav>
+    <div class="navbar navbar-inverse navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+{#        <a class="navbar-brand" href="{% url 'myWebsite:index_page' %}">Mateusz Miotk</a>#}
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+{#          <li><a href="{% url 'myWebsite:index_page' %}">Strona domowa</a></li>#}
+{#          <li><a href="{% url 'myWebsite:research_page' %}">Nauka</a></li>#}
+{#          <li><a href="{% url 'myWebsite:blog_page' %}">Blog</a></li>#}
+{#          <li><a href="{% url 'myWebsite:teaching_page' %}">Dydaktyka</a></li>#}
 
-{% block content %}{% endblock %}
+          {% if user.is_authenticated %}
+                 {% if request.is_secure %}
+                      <li>  <a href="https://login.microsoftonline.com/4c46da7c-e2cc-4e6c-bab5-b982a10b2809/oauth2/logout?post_logout_redirect_uri=https://{{ request.get_host }}/logout">{{ user }} (Wyloguj)</a></li>
+                 {% else %}
+                      <li>  <a href="https://login.microsoftonline.com/4c46da7c-e2cc-4e6c-bab5-b982a10b2809/oauth2/logout?post_logout_redirect_uri=http://{{ request.get_host }}/logout">{{ user }} (Wyloguj)</a></li>
+                 {% endif %}
+
+          {% else %}
+              <li><button id="microsoft-login" class="btn btn-link" type="button">Logowanie za pomocą konta Office365</button></li>
+
+          {% endif %}
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+  </div>
+
+
+  <!-- +++++ Welcome Section +++++ -->
+  <div id="ww">
+    <div class="container">
+      {% block content %}
+      {% endblock %}
+      <!-- /row -->
+    </div>
+    <!-- /container -->
+  </div>
+  <!-- /ww -->
+
+
+  <!-- +++++ Projects Section +++++ -->
+
+  <!-- /container -->
+
+
+  <!-- +++++ Footer Section +++++ -->
+
+  <div id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <h4>Mateusz Miotk</h4>
+          <p>
+              Instytut Informatyki<br/>
+              Zakład optymalizacji kombinatorycznej<br/>
+              Uniwersytet Gdański<br/>
+              ul. Wita Stwosza 57<br/>
+              80-306 Gdańsk, Polska<br/>
+              <img src="{% static "images/mail_dol.png"%}" alt=""><br/>
+          </p>
+        </div>
+        <!-- /col-lg-4 -->
+
+        <div class="col-lg-4">
+          <h4>Przydatne linki</h4>
+          <p>
+            <a href="http://www.inf.ug.edu.pl">Instytut Informatyki UG</a><br/>
+            <a href="http://www.mfi.ug.edu.pl">Wydział MFI UG</a><br/>
+            <a href="http://www.ug.edu.pl">Uniwersytet Gdański</a><br/>
+            <a href="http://www.github.com/">Github</a><br/>
+            <a href="http://www.stackoverflow.com/">Stackoverflow</a><br/>
+            <a href="http://www.coursera.com">Coursera</a><br/>
+            <a href="https://stepik.org/catalog?language=en">Stepik</a><br/>
+            <a href="https://www.researchgate.net/profile/Mateusz_Miotk">ResearchGate</a><br/>
+		    <a href="https://scholar.google.com/citations?user=GlUQnscAAAAJ&hl=pl">Google Scholar</a><br/>
+		    <a href="https://orcid.org/0000-0003-2768-7861">Orcid</a>
+          </p>
+        </div>
+        <!-- /col-lg-4 -->
+
+        <div class="col-lg-4">
+          <h4>Losowy cytat</h4>
+            <p>"{{ citationBody }}"</p>
+
+            <p align="right">{{ citationAuthor }}</p>
+        </div>
+        <!-- /col-lg-4 -->
+      </div>
+    </div>
+  </div>
+
+  <div id="copyrights">
+    <div class="container">
+      <p>
+        &copy; Copyrights <strong>Stanley</strong>. All Rights Reserved
+      </p>
+      <div class="credits">
+        <!--
+          You are NOT allowed to delete the credit link to TemplateMag with free version.
+          You can delete the credit link only if you bought the pro version.
+          Buy the pro version with working PHP/AJAX contact form: https://templatemag.com/stanley-bootstrap-freelancer-template/
+          Licensing information: https://templatemag.com/license/
+        -->
+        Created with Stanley template by <a href="https://templatemag.com/">TemplateMag</a>
+      </div>
+    </div>
+  </div>
+  <!-- / copyrights -->
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static "jquery/jquery.min.js"%}"></script>
+  <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
+    {% if microsoft_login_enabled %}
+    <script type="text/javascript" src="{% static 'bootstrap/js/login.js' %}"></script>
+    <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded",
+                              function(event) {
+                                window.microsoft.login = new window.microsoft.objects.LoginController({
+                                  'authorization_url': '{{ microsoft_authorization_url }}'
+                                });
+                              });
+    </script>
+  {% endif %}
+{#  <script src="{% static "php-mail-form/validate.js"%}"></script>#}
+{#  <script src="{% static "easing/easing.min.js"%}"></script>#}
+
+  <!-- Template Main Javascript File -->
 
 </body>
 </html>

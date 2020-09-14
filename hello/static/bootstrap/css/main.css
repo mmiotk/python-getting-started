@@ -1,0 +1,49 @@
+/***************************
+    Site Design CSS
+***************************/
+
+#box {
+  margin: auto;
+  font: 10%/1.6em Verdana, Tahoma, arial, sans-serif;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: auto;
+  width: auto;
+  padding: 2em;
+  color: #333;
+  text-align: center;
+  overflow: visible;
+}
+
+/***************************
+    Google Table CSS
+***************************/
+
+
+
+
+
+.google-visualization-table-td ,
+.google-visualization-table-th {
+  border: 1px solid #333 !important;
+  text-align: center;
+}
+
+.google-visualization-table-tr-head,
+.google-visualization-table-tr-head td,
+.google-visualization-table-tr-head-nonstrict {
+  background-color: #333 !important;
+  background-image: none !important;
+  color: #fff !important;
+}
+
+.google-visualization-table .gradient {
+  background-image: none !important;
+}
+
+
+/***************************
+    Text Selection CSS
+***************************/
