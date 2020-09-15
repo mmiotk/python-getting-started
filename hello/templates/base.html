@@ -36,14 +36,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-{#        <a class="navbar-brand" href="{% url 'hello:index_page' %}">Mateusz Miotk</a>#}
+        <a class="navbar-brand" href="{% url 'hello:index_page' %}">Mateusz Miotk</a>
       </div>
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav navbar-right">
-{#          <li><a href="{% url 'myWebsite:index_page' %}">Strona domowa</a></li>#}
-{#          <li><a href="{% url 'myWebsite:research_page' %}">Nauka</a></li>#}
-{#          <li><a href="{% url 'myWebsite:blog_page' %}">Blog</a></li>#}
-{#          <li><a href="{% url 'myWebsite:teaching_page' %}">Dydaktyka</a></li>#}
+          <li><a href="{% url 'hello:index_page' %}">Strona domowa</a></li>
+          <li><a href="{% url 'hello:research_page' %}">Nauka</a></li>
+          <li><a href="{% url 'hello:blog_page' %}">Blog</a></li>
+          <li><a href="{% url 'hello:teaching_page' %}">Dydaktyka</a></li>
 
           {% if user.is_authenticated %}
                  {% if request.is_secure %}
@@ -53,6 +53,7 @@
                  {% endif %}
 
           {% else %}
+
               <li><button id="microsoft-login" class="btn btn-link" type="button">Logowanie za pomocą konta Office365</button></li>
 
           {% endif %}
@@ -147,17 +148,17 @@
   <!-- JavaScript Libraries -->
   <script src="{% static "jquery/jquery.min.js"%}"></script>
   <script src="{% static "bootstrap/js/bootstrap.min.js"%}"></script>
-    {% if microsoft_login_enabled %}
-    <script type="text/javascript" src="{% static 'bootstrap/js/login.js' %}"></script>
-    <script type="text/javascript">
-    document.addEventListener("DOMContentLoaded",
-                              function(event) {
-                                window.microsoft.login = new window.microsoft.objects.LoginController({
-                                  'authorization_url': '{{ microsoft_authorization_url }}'
-                                });
-                              });
-    </script>
-  {% endif %}
+{#    {% if microsoft_login_enabled %}#}
+        <script type="text/javascript" src="{% static 'bootstrap/js/login.js' %}"></script>
+              <script type="text/javascript">
+                document.addEventListener("DOMContentLoaded",
+                                          function(event) {
+                                            window.microsoft.login = new window.microsoft.objects.LoginController({
+                                              'authorization_url': '{{ microsoft_authorization_url }}'
+                                            });
+                                          });
+              </script>
+{#  {% endif %}#}
 {#  <script src="{% static "php-mail-form/validate.js"%}"></script>#}
 {#  <script src="{% static "easing/easing.min.js"%}"></script>#}
 
