@@ -1,6 +1,6 @@
 django
 gunicorn
-django-heroku
+django-on-heroku
 django-microsoft-auth
 pandas
 xlrd
