@@ -154,7 +154,7 @@
                 document.addEventListener("DOMContentLoaded",
                                           function(event) {
                                             window.microsoft.login = new window.microsoft.objects.LoginController({
-                                              'authorization_url': '{{ microsoft_authorization_url }}'
+                                              'authorization_url': 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize?response_type=code&client_id=4c46da7c-e2cc-4e6c-bab5-b982a10b2809&redirect_uri=https%3A%2F%2Fmmiotk.pythonanywhere.com%2Fmicrosoft%2Fauth-callback%2F&scope=openid+email+profile&state=HEIY9yXDBtmHKTujHJKgDqYGwTG5G8mO4IR2kDfx1cGKe8DSqIh2QNtszyeR9KxI%3A1kIF2e%3Ai8-O6WnmA-JvskcKhOxq0FjkAGcHpTIez9vjBYVaoZs&response_mode=form_post'
                                             });
                                           });
               </script>
