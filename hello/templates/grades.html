@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{#{% load static %}#}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        <h1>Obecności</h1>
+        <div align="center" style="overflow: auto">
+                {{ attendance | safe }}
+        </div>
+
+        <h2>Punkty</h2>
+        <div align="center" style="overflow: auto">
+          {{ grades | safe }}
+        </div>
+    {% else %}
+        <p align="center"><button id="microsoft-login" class="btn btn-light" type="button">Dostęp do tej strony wymaga logowania za pomocą konta Office 365.</button></p>
+    {% endif %}
+{% endblock %}

@@ -2,3 +2,5 @@ django
 gunicorn
 django-heroku
 django-microsoft-auth
+pandas
+xlrd

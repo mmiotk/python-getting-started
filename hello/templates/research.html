@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{#{% load static %}#}
+
+{% block content %}
+  <h1>Zainteresowania naukowe</h1>
+    <ul>
+      <li>Zagadnienia z teorii grafów, a w szczególności problem dominowania oraz pokrycia wierzchołkowego.</li>
+      <li>Złożoność obliczeniowa algorytmów grafowych.</li>
+      <li>Proces testowania oprogramowania.</li>
+      <li>Proces e-learningu w szkolnictwie.</li>
+    </ul>
+  <h1>Publikacje naukowe</h1>
+    {% if publishedPublications|length > 0 %}
+        <h3>Opublikowane</h3>
+            <ul>
+            {% for publication in publishedPublications %}
+                <li>
+                {% if publication.authors.all|length > 1 %}
+                    {% for author in publication.authors.all %}
+                        {% if forloop.last %}
+                            {% if author.secondname == "Miotk" %}
+                              and <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                            {% else %}
+                              and {{ author.firstname|first }}. {{ author.secondname }},
+                            {% endif %}
+                        {% else %}
+                          {% if author.secondname == "Miotk" %}
+                              <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                          {% else %}
+                              {{ author.firstname|first }}. {{ author.secondname }},
+                          {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for author in publication.authors.all %}
+                         {% if author.secondname == "Miotk" %}
+                           <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                         {% else %}
+                             {{ author.firstname|first }}. {{ author.secondname }},
+                         {% endif %}
+                    {% endfor %}
+                {% endif %}
+                    <em>{{ publication.title }}</em>, {{ publication.journal }} <strong>{{ publication.volume }}</strong> ({{ publication.year }}),
+                    {% if publication.number > 0 %}
+                        no. {{ publication.number }},
+                    {% endif %}
+                    {{ publication.pages }}.
+                    [<a href="{{ publication.doi }}">DOI</a>] [<a href="{{ publication.url }}">URL</a>]
+                </li>
+            {% endfor %}
+            </ul>
+    {% endif %}
+    {% if inPressPublications|length > 0 %}
+        <h3>Przyjęte do druku</h3>
+            <ul>
+            {% for publication in inPressPublications %}
+                <li>
+                {% if publication.authors.all|length > 1 %}
+                    {% for author in publication.authors.all %}
+                        {% if forloop.last %}
+                            {% if author.secondname == "Miotk" %}
+                              and <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                            {% else %}
+                              and {{ author.firstname|first }}. {{ author.secondname }},
+                            {% endif %}
+                        {% else %}
+                          {% if author.secondname == "Miotk" %}
+                              <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                          {% else %}
+                              {{ author.firstname|first }}. {{ author.secondname }},
+                          {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% for author in publication.authors.all %}
+                         {% if author.secondname == "Miotk" %}
+                           <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                         {% else %}
+                             {{ author.firstname|first }}. {{ author.secondname }},
+                         {% endif %}
+                    {% endfor %}
+                {% endif %}
+                    <em>{{ publication.title }}</em>, {{ publication.journal }} ({{ publication.year }}),
+                    {{ publication.pages }}.
+                    [<a href="{{ publication.doi }}">DOI</a>] [<a href="{{ publication.url }}">URL</a>]
+                </li>
+            {% endfor %}
+            </ul>
+    {% endif %}
+
+    {% if submittedPublications|length > 0 %}
+        <h3>Wysłane</h3>
+            <ul>
+            {% for publication in submittedPublications %}
+                <li>
+                {% if publication.authors.all|length > 1 %}
+                    {% for author in publication.authors.all %}
+                        {% if forloop.last %}
+                            {% if author.secondname == "Miotk" %}
+                              and <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                            {% else %}
+                              and {{ author.firstname|first }}. {{ author.secondname }},
+                            {% endif %}
+                        {% else %}
+                          {% if author.secondname == "Miotk" %}
+                              <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                          {% else %}
+                              {{ author.firstname|first }}. {{ author.secondname }},
+                          {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                     {% for author in publication.authors.all %}
+                         {% if author.secondname == "Miotk" %}
+                           <strong>{{ author.firstname|first }}. {{ author.secondname }}</strong>,
+                         {% else %}
+                             {{ author.firstname|first }}. {{ author.secondname }},
+                         {% endif %}
+                     {% endfor %}
+                {% endif %}
+                    <em>{{ publication.title }}</em>.
+                 </li>
+            {% endfor %}
+            </ul>
+    {% endif %}
+    <h1>Referaty</h1>
+    <ul>
+    {% for presentation in presentations %}
+        <li><em>{{ presentation.title }}</em>, {{ presentation.eventName }}, {{ presentation.city }}, {{ presentation.year }}.</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

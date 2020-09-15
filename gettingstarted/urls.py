@@ -15,7 +15,9 @@ import hello.views
 # Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
 
 urlpatterns = [
-    path("", hello.views.index, name="index"),
-    path("db/", hello.views.db, name="db"),
-    path("admin/", admin.site.urls),
+    path('admin/', admin.site.urls),
+    # path('myWebsite/', include('hello.urls', namespace='myWebsite')),
+    # path('publications/', include('publications_bootstrap.urls')),
+    path('microsoft/', include('microsoft_auth.urls', namespace='microsoft')),
+    path('', include('hello.urls', namespace='index')),
 ]

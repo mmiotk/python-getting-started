@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{#{% load static %}#}
+
+{#{% block content %}#}
+{#  <h1>Obecności</h1>#}
+{#    {{ attendance_table | safe }}#}
+{#  <h2>Punkty</h2>#}
+{#    {{ grades_table | safe }}#}
+{#{% endblock %}#}
+
+{% block content %}
+  {% if user.is_authenticated %}
+      <h1>Rok akademicki 2020/2021</h1>
+        <p><strong>Dostęp do informacji o zajęciach za pomocą aplikacji <mark>MS Teams</mark> (link do zajęć znajduje się w tytule prowadzonego przedmiotu).</strong></p>
+        {% if winterExtramural|length != 0 or winterStationary|length != 0 %}
+          <h2>Semestr zimowy</h2>
+            {% if winterStationary|length != 0 %}
+                <h3>Studia stacjonarne</h3>
+                <ul>
+                    {% for lecture in winterStationary %}
+                   <li>
+                        <h4><strong><a href="{{ lecture.linkTeams }}">{{ lecture.title }}</a> ({{ lecture.kind_lecture }}) </strong></h4>
+                        <strong>Wykład: </strong> {{ lecture.lecturer }} </br>
+                   </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% if winterExtramural|length != 0 %}
+                <h3>Studia niestacjonarne</h3>
+                <ul>
+                    {% for lecture in winterExtramural %}
+                   <li>
+                        <h4><strong><a href="{{ lecture.linkTeams }}">{{ lecture.title }}</a> ({{ lecture.kind_lecture }}) </strong></h4>
+                        <strong>Wykład: </strong> {{ lecture.lecturer }} </br>
+                   </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endif %}
+        {% now "Y" as year %}
+        {% now "F" as month %}
+        {% if month >= "Marzec" and month <= "Wrzesień"  %}
+            {% if summerStationary|length != 0 or summerExtramural|length != 0 %}
+                <h2>Semestr letni</h2>
+                {% if summerStationary|length != 0 %}
+                  <h3>Studia stacjonarne</h3>
+                  <ul>
+
+                    {% for lecture in summerStationary %}
+                   <li>
+                        <h4><strong><a href="{{ lecture.linkTeams }}">{{ lecture.title }}</a> ({{ lecture.kind_lecture }}) </strong></h4>
+                        <strong>Wykład: </strong> {{ lecture.lecturer }} </br>
+                   </li>
+                    {% endfor %}
+                 </ul>
+                {% endif %}
+                {% if summerExtramural|length != 0 %}
+                  <h3>Studia niestacjonarne</h3>
+                  <ul>
+                    {% for lecture in summerExtramural %}
+                   <li>
+                        <h4><strong><a href="{{ lecture.linkTeams }}">{{ lecture.title }}</a> ({{ lecture.kind_lecture }}) </strong></h4>
+                        <strong>Wykład: </strong> {{ lecture.lecturer }} </br>
+                   </li>
+                    {% endfor %}
+                 </ul>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% else %}
+      <p align="center"><button id="microsoft-login" class="btn btn-light" type="button">Dostęp do tej strony wymaga logowania za pomocą konta Office 365.</button></p>
+    {% endif %}
+
+{% endblock %}
